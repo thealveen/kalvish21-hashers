@@ -5,7 +5,6 @@
 
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const argon2 = require('argon2-ffi').argon2i;
 const util = require('util');
 const randomBytes = util.promisify(crypto.randomBytes);
 
@@ -90,6 +89,7 @@ module.exports.getHasher = function(algorithm) {
 
 
 module.exports.Argon2PasswordHasher = function() {
+    const argon2 = require('argon2-ffi').argon2i;
     this.algorithm = "argon2";
     this.version = 19;
     this.time_cost = 2;
